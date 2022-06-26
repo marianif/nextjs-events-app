@@ -1,0 +1,9 @@
+.error {
+  text-align: center;
+  border-radius: 100%;
+  color: #090909;
+}
+
+.error h1 {
+  font-size: 50px;
+}
