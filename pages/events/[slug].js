@@ -51,8 +51,8 @@ export async function getStaticPaths() {
   const res = await fetch(`${server}/api/events`);
   const events = await res.json();
 
-  const paths = events.map((event) => ({
-    params: { slug: event.slug },
+  const paths = events.data.map((event) => ({
+    params: { slug: event.attributes.slug },
   }));
 
   return {
@@ -74,17 +74,5 @@ export async function getStaticProps({ params: { slug } }) {
     },
   };
 }
-
-// // Runs at request time
-// export const getServerSideProps = async ({ query: { slug } }) => {
-//   const res = await fetch(`${server}/api/events/${slug}`);
-//   const event = await res.json();
-
-//   return {
-//     props: {
-//       event,
-//     },
-//   };
-// };
 
 export default EventPage;

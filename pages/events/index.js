@@ -7,7 +7,7 @@ const EventsPage = ({ events }) => {
       <h1>Upcoming Events!</h1>
       {events.length === 0 && <h3>No events to display</h3>}
       {events.map((item) => {
-        return <EventItem key={item.id} item={item} />;
+        return <EventItem key={item.id} item={item.attributes} />;
       })}
     </Layout>
   );
@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      events: events.slice(0, 3),
+      events: events.data,
     },
     revalidate: 1,
   };
